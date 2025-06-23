@@ -1,0 +1,102 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  align-items: flex-end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-width: 220px;
+  flex-grow: 1;
+}
+
+.filter-group label {
+  font-weight: 600;
+  color: #333;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.filter-group select {
+  padding: 0.8rem 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23000%22%20d%3D%22M287%2C118.8L146.2%2C259.4L5.4%2C118.8c-2.9-2.9-2.9-7.7%2C0-10.6l10.6-10.6c2.9-2.9%2C7.7-2.9%2C10.6%2C0l120.9%2C120.7l120.9-120.7c2.9-2.9%2C7.7-2.9%2C10.6%2C0l10.6%2C10.6C289.9%2C111.1%2C289.9%2C115.9%2C287%2C118.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.filter-group select:hover {
+  border-color: #a0c4ff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.filter-group.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.8rem;
+  min-width: unset;
+  flex-grow: 0;
+  padding-bottom: 0.5rem;
+}
+
+.filter-group.checkbox label {
+  cursor: pointer;
+  user-select: none;
+  margin-bottom: 0;
+  font-weight: 500;
+  color: #444;
+}
+
+.filter-group.checkbox input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #007bff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.filter-group.checkbox input[type="checkbox"]:hover {
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .filter-group {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .filter-group.checkbox {
+    flex-direction: row;
+    justify-content: flex-start;
+    width: auto;
+  }
+} 
