@@ -111,15 +111,14 @@ Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages with CRA
 ```
 4. Deploy: `npm run deploy`
 
-## Glimpse
-
+## Glimpse  
 
 ## Contributing
 - Open an issue for bugs or feature requests.
 - Create a PR with a short description and screenshots for UI changes.
 
 ## Author
-Kusum Kharayat
-github:- KusumKr
+- Kusum Kharayat
+- Github:- KusumKr
 
 
