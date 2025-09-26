@@ -1,46 +1,123 @@
-# Getting Started with Create React App
+# Workscape — Explore Remote Work Destinations in India
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Workscape helps remote workers discover great places to live and work across India. Browse destinations like Goa, Bengaluru, Udaipur, Rishikesh and more with details on internet speed, weather, approximate costs, coworking availability, and leisure activities.
 
-## Available Scripts
+Live development runs locally on http://localhost:3000
 
-In the project directory, you can run:
+## Features
+- Explore curated Indian destinations with images and key metrics
+- Powerful filter bar by internet speed, budget, State/UT, weather, coworking and leisure
+- Destination details pages (cards link by id)
+- Newsletter signup UI in the footer
+- Fallback default destinations when Firestore is empty (uses images in `public/`)
 
-### `npm start`
+## Tech Stack
+- React + TypeScript (Create React App)
+- React Router
+- Firebase Firestore (client SDK)
+- CSS modules (plain CSS files per component)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Project Structure
+```
+workscape/
+├─ public/
+│  ├─ goa.jpg, bangalore.jpg, udaipur.jpg, rishikesh.jpg, dharamshala.jpg, pondicherry.jpg
+│  ├─ workscape-logo.jpg, favicon.ico, index.html, manifest.json, robots.txt
+├─ src/
+│  ├─ components/
+│  │  ├─ Destinations.tsx, DestinationCard.tsx, FilterBar.tsx, Footer.tsx, Hero.tsx
+│  │  ├─ *.css
+│  ├─ pages/
+│  │  ├─ Explore.tsx, Community.tsx, AboutUs.tsx
+│  ├─ styles/Explore.css
+│  ├─ assets/
+│  │  └─ workscape-animation.json, bg-image.jpg
+│  ├─ firebase.ts
+│  ├─ App.tsx, index.tsx
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Data Model
+Each destination document (Firestore) or default item implements:
+```
+{
+  id: string,
+  name: string,            // e.g. "Goa, Goa"
+  image: string,           // e.g. "/goa.jpg" (from public/)
+  internetSpeed: string,   // e.g. "70 Mbps"
+  weather: string,         // e.g. "Tropical"
+  cost: string,            // e.g. "800"
+  description: string,
+  hasCoworking?: boolean,
+  hasLeisure?: boolean
+}
+```
 
-### `npm test`
+## Setup
+1. Install dependencies
+```
+npm install
+```
+2. Create Firebase config at `src/firebase.ts` (if not present):
+```
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+};
 
-### `npm run build`
+const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
+```
+3. Add a `.env` (not committed) with your Firebase credentials:
+```
+REACT_APP_FIREBASE_API_KEY=...
+REACT_APP_FIREBASE_AUTH_DOMAIN=...
+REACT_APP_FIREBASE_PROJECT_ID=...
+REACT_APP_FIREBASE_STORAGE_BUCKET=...
+REACT_APP_FIREBASE_SENDER_ID=...
+REACT_APP_FIREBASE_APP_ID=...
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Default Destinations Fallback
+If Firestore has no `destination` documents, the app shows a built‑in set of Indian destinations using images from `public/`. When Firestore has data, it is merged with defaults and deduplicated by id/name, preferring Firestore.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To seed Firestore later, create a `destination` collection with docs matching the Data Model above. Ensure `name` follows "City, State" for State/UT filtering.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Scripts
+- Start dev server
+```
+npm start
+```
+- Test
+```
+npm test
+```
+- Build for production
+```
+npm run build
+```
 
-### `npm run eject`
+## Deployment
+Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages with CRA:
+1. Add homepage to `package.json`: `"homepage": "https://<user>.github.io/<repo>"`
+2. Install: `npm i -D gh-pages`
+3. Add scripts:
+```
+"predeploy": "npm run build",
+"deploy": "gh-pages -d build"
+```
+4. Deploy: `npm run deploy`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
+- Open an issue for bugs or feature requests.
+- Create a PR with a short description and screenshots for UI changes.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
+MIT
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
