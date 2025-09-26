@@ -2,8 +2,6 @@
 
 Workscape helps remote workers discover great places to live and work across India. Browse destinations like Goa, Bengaluru, Udaipur, Rishikesh and more with details on internet speed, weather, approximate costs, coworking availability, and leisure activities.
 
-Live development runs locally on http://localhost:3000
-
 ## Features
 - Explore curated Indian destinations with images and key metrics
 - Powerful filter bar by internet speed, budget, State/UT, weather, coworking and leisure
@@ -12,10 +10,9 @@ Live development runs locally on http://localhost:3000
 - Fallback default destinations when Firestore is empty (uses images in `public/`)
 
 ## Tech Stack
-- React + TypeScript (Create React App)
-- React Router
+- React + Typescript
+- Tailwind CSS
 - Firebase Firestore (client SDK)
-- CSS modules (plain CSS files per component)
 
 ## Project Structure
 ```
@@ -118,6 +115,8 @@ Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages with CRA
 - Open an issue for bugs or feature requests.
 - Create a PR with a short description and screenshots for UI changes.
 
-## License
-MIT
+## Author
+Kusum Kharayat
+github:- KusumKr
+
 
