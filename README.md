@@ -1,4 +1,4 @@
-# Workscape — Explore Remote Work Destinations in India
+# Workscape - Explore Remote Work Destinations in India
 
 Workscape helps remote workers discover great places to live and work across India. Browse destinations like Goa, Bengaluru, Udaipur, Rishikesh and more with details on internet speed, weather, approximate costs, coworking availability, and leisure activities.
 
@@ -110,6 +110,9 @@ Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages with CRA
 "deploy": "gh-pages -d build"
 ```
 4. Deploy: `npm run deploy`
+
+## Glimpse
+
 
 ## Contributing
 - Open an issue for bugs or feature requests.
