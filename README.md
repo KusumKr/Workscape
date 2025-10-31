@@ -119,6 +119,6 @@ Any static host works (GitHub Pages, Netlify, Vercel). For GitHub Pages with CRA
 
 ## Author
 - Kusum Kharayat
-- Github:- KusumKr
+- Likedin - https://www.linkedin.com/in/kusumkharayat/
 
 
