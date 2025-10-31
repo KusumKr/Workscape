@@ -13,6 +13,10 @@ Workscape helps remote workers discover great places to live and work across Ind
 - React + Typescript
 - Tailwind CSS
 - Firebase Firestore (client SDK)
+  
+## Glimpse
+<img width="1335" height="585" alt="image" src="https://github.com/user-attachments/assets/0216695b-2202-407f-8e98-fe6976562053" />
+
 
 ## Project Structure
 ```
